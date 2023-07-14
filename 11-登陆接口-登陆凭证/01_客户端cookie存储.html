@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>客户端网站</h2>
+    <button>设置 cookie</button>
+    <script>
+        // 1. 在浏览器中通过 js 设置 cookie（在开发中很少使用）
+        // 没有设置 max-age 时，是一个内存 cookie, 浏览器关闭时会消失
+        // 置 max-age 时, 是一个硬盘 cookie, 只能等过期时间达到时才会销毁，手动销毁 cookie 只能通过设置 max-age = 0 的方式
+        const btn = document.querySelector('button')
+        btn.onclick = function() {
+            document.cookie = "name=xizhou;max-age=60;"
+            document.cookie = "age=1000;max-age=30;"
+        }
+    </script>
+</body>
+</html>
