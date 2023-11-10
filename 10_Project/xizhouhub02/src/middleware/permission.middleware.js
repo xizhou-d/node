@@ -17,6 +17,7 @@ const verifyMomentPermission = async (ctx, next) => {
 } 
 
 const verifyPermission = async (ctx, next) => {
+    console.log('ctx', ctx)
     // 1. 获取登陆用户 id, 修改动态 id
     const { id } = ctx.user
 

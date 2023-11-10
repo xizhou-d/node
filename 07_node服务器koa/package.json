@@ -1,10 +1,12 @@
 {
   "name": "learn_koa",
   "version": "1.0.0",
-  "description": "",
+  "description": "koa98098090",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "echo 11111111",
+    "test": "node 11_自由练习.js 123 456 789",
+    "posttest": "echo 22222222"
   },
   "author": "",
   "license": "ISC",
@@ -17,3 +19,5 @@
     "multer": "^1.4.5-lts.1"
   }
 }
+
+
