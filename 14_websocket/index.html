@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>发送数据到服务器</button>
+    <script>
+        // 客户端浏览器 websocket
+        const ws = new WebSocket("ws://localhost:3000"); // 创建一个 websocket, 同时，发送连接到服务器
+
+        ws.onopen = function() {
+            console.log('链接已建立')
+        }
+        ws.onmessage = function(e) {
+            console.log('接收到来自服务器的数据：', e.data)
+        }
+        ws.onclose = function() {
+            console.log('通道关闭')
+        }; // 客户端主动断开连接
+
+        document.querySelector('button').onclick = function() {
+            ws.send('111222333')
+        }
+    </script>
+</body>
+</html>
