@@ -7,7 +7,9 @@ const readStream = fs.createReadStream('./aaa.txt', {
     start: 2,
     // 读取到什么位置后结束（包含结束位置 ）
     end: 16,
-    highWaterMark: 3
+    highWaterMark: 3,
+    // 读完后自动关闭
+    autoClose: true
 })
 
 // 2. 监听读取到的数据

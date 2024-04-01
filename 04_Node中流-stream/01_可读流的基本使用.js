@@ -1,4 +1,4 @@
-const fs = require('fs')
+ const fs = require('fs')
 
 // 1. 一次性读取
 // 缺点一：没有办法精确控制从哪里读取，读取到什么位置
