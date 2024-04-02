@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>强制缓存：Expires</h1>
+    <button id="Expires">Expires</button>
+    <hr>
+    <h1>强制缓存：Cache-Control</h1>
+    <button id="CacheControl">Cache-Control</button>
+    <hr>
+    <h1>协商缓存：Last-modified</h1>
+    <button id="LastModified">Last-modified</button>
+    <hr>
+    <h1>协商缓存：Etag</h1>
+    <button id="etag">Etag</button>
+    <script>
+        const expiresBtn = document.querySelector('#Expires')
+        expiresBtn.onclick = function() {
+            fetch('http://localhost:8000/api/expires')
+        }
+
+        const cacheControlBtn = document.querySelector('#CacheControl')
+        cacheControlBtn.onclick = function() {
+            fetch('http://localhost:8000/api/cacheControl')
+        }
+
+        const lastModifiedBtn = document.querySelector('#LastModified')
+        lastModifiedBtn.onclick = function() {
+            fetch('http://localhost:8000/api/lastModified')
+        }
+
+        const etagBtn = document.querySelector('#etag')
+        etagBtn.onclick = function() {
+            fetch('http://localhost:8000/api/etag')
+        }
+    </script>
+</body>
+</html>
