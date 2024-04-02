@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>文件下载</h1>
+    <ul>
+        <li>
+            <!-- 触发浏览器下载 -->
+            <a href="/download/shihao.jpeg">浏览器下载</a>
+        </li>
+        <li>
+            <!-- 
+                迅雷下载协议
+                1. 把完整的下载地址得到
+                2. AA地址ZZ
+                3. base64编码
+                4. thunder://base64编码
+             -->
+            <a resrole="thunder" href="/download/shihao.jpeg">迅雷下载</a>
+        </li>
+    </ul>
+    <script>
+        // 处理迅雷下载
+        const thunderEl = document.querySelector('a[resRole="thunder"]')
+        console.log('thunderEl', thunderEl)
+        const originLink = thunderEl.href
+        console.log('originLink', originLink)
+        let thunderLink = `AA${originLink}ZZ`
+        thunderLink = btoa(thunderLink)
+        thunderLink = 'thunder://' + thunderLink
+        
+        // 重新赋值 a 标签的 href
+        thunderEl.href = thunderLink
+
+        // 触发迅雷下载的时候报错：Failed to launch 'thunder://QUFodHRwOi8vbG9jYWxob3N0OjgwMDAvZG93bmxvYWQvc2hpaGFvLmpwZWdaWg==' because the scheme does not have a registered handler.
+        // 该报错是因为没有安装迅雷，安装一下就可以了。
+    </script>
+</body>
+</html>

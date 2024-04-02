@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <input type="file">
     <button>上传</button>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         const btn = document.querySelector('button')
-        btn.onclick = function() {
+        btn.onclick = function () {
             // 1. 创建表单对象
             const formData = new FormData()
 
@@ -26,9 +28,12 @@
                 data: formData,
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                }
+                },
+                // 阻止浏览器刷新页面
+                redirect: 'manual'
             })
         }
     </script>
 </body>
+
 </html>

@@ -4,16 +4,16 @@ const fs = require('fs')
 // 1. 创建 server 服务器
 const server = http.createServer((req, res) => {
     // 创建 wirtable stream
-    const writeStream = fs.createWriteStream('./shihao.jpeg', {
+    const writeStream = fs.createWriteStream('./upload/shihao.jpeg', {
         flags: 'a+'
     })
     // 客户端传递的数据是表单数据（请求体）
-    // req.on('data', (data) => {
-    //     console.log('data', data)
-    //     writeStream.write(data)
-    // })
+    req.on('data', (data) => {
+        console.log('data', data)
+        writeStream.write(data)
+    })
 
-    req .pipe(writeStream)
+    // req.pipe(writeStream)
     req.on('end', () => {
         res.end('文件上传成功')
         writeStream.close()
