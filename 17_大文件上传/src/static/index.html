@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input id="file" type="file">
+        <button id="upload">上传</button>
+    </div>
+    <script type="module">
+        import { fileSlice, uploadFiles } from './utils.js'
+        const fileEl = document.querySelector('#file')
+        const uploadEl = document.querySelector('#upload')
+        
+        uploadEl.onclick = function(e) {
+            const file = fileEl.files[0]
+            const chunks = fileSlice(file)
+            console.log('chunks', chunks)
+            const promises = uploadFiles(chunks)
+
+            Promise.all(promises).then(res => {
+                console.log('上传完成。')
+                // 上传完成之后，通知服务端合并文件
+                fetch('/upload/merge', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        filename: 'fengjing'
+                    })
+                })
+            })
+        }
+    </script>
+</body>
+</html>
