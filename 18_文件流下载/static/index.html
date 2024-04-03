@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button id="download">download</button>
+    </div>
+    <script>
+        const downloadEl = document.querySelector('#download')
+
+        downloadEl.onclick = function() {
+            fetch('/download/stream', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    filename: 'yangkun.pdf'
+                }) // arrayBuffer() 方法是 Response 对象的一个方法，用于将响应体解析为二进制数组
+                // res 类型的变量也是一个 ArrayBuffer 对象。
+            }).then(res => res.arrayBuffer()).then(res => {
+                console.log('res', res)
+                const blob = new Blob([res], {type: 'application/pdf'}) // type： 如果是 pdf 文件就用 application/pdf, 图片就用 image/jpg
+                const url = URL.createObjectURL(blob)
+
+                const a = document.createElement('a')
+                a.href = url
+                // 下面这行代码需要加上，不加的话不会下载，会直接在浏览器打开；加上之后会触发浏览器的下载行为
+                a.download = 'yangkun.pdf'
+                a.click()
+            })
+        }
+    </script>
+</body>
+</html>
