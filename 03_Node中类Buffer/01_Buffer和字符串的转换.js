@@ -4,7 +4,7 @@
 // const buf2 = new Buffer.from('world')
 // console.log(buf) // 一个字母一个字节 
 
-// const buf3 = new Buffer.from('大秦帝国')
+// const buf3 = new Buffer.from('大秦帝国') // 一个中文汉字是三个字节
 // console.log('buf3', buf3)
 
 // console.log(buf3.toString())
